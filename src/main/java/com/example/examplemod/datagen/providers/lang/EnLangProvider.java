@@ -15,7 +15,7 @@ public class EnLangProvider extends LanguageProvider implements IDataProvider {
 
     @Override
     protected void addTranslations () {
-        add("itemGroup." + Mod.MOD_ID, "Example Mod");
+        add("itemGroup." + Mod.MOD_ID, Mod.NAME);
         add(ModItems.EXAMPLE_ITEM.asItem(), "Example Item");
         add(ModBlocks.EXAMPLE_BLOCK.block(), "Example Block");
     }
