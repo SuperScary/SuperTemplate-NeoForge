@@ -5,10 +5,10 @@ import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.common.Mod;
 
-@Mod(value = com.example.examplemod.core.Mod.MOD_ID, dist = Dist.DEDICATED_SERVER)
-public class ModServer extends ModBase {
+@Mod(value = ExampleMod.MOD_ID, dist = Dist.DEDICATED_SERVER)
+public class ExampleModServer extends ExampleModBase {
 
-    public ModServer (IEventBus eventBus) {
+    public ExampleModServer (IEventBus eventBus) {
         super(eventBus);
     }
 

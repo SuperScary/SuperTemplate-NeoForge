@@ -1,6 +1,6 @@
 package com.example.examplemod.core.registries;
 
-import com.example.examplemod.core.Mod;
+import com.example.examplemod.core.ExampleMod;
 import com.example.examplemod.core.Tab;
 import com.example.examplemod.core.definitions.ItemDefinition;
 import com.google.common.base.Preconditions;
@@ -19,7 +19,7 @@ import java.util.function.Function;
 
 public class ModItems {
 
-    public static final DeferredRegister.Items REGISTRY = DeferredRegister.createItems(Mod.MOD_ID);
+    public static final DeferredRegister.Items DR = DeferredRegister.createItems(ExampleMod.MOD_ID);
 
     private static final List<ItemDefinition<?>> ITEMS = new ArrayList<>();
 
@@ -31,7 +31,7 @@ public class ModItems {
     }
 
     static <T extends Item> ItemDefinition<T> item (String name, Function<Item.Properties, T> factory) {
-        return item(name, Mod.getResource(name), factory, Tab.MAIN);
+        return item(name, ExampleMod.getResource(name), factory, Tab.MAIN);
     }
 
     static <T extends Item> ItemDefinition<T> item (String name, ResourceLocation id, Function<Item.Properties, T> factory) {
@@ -39,8 +39,8 @@ public class ModItems {
     }
 
     static <T extends Item> ItemDefinition<T> item (String name, ResourceLocation id, Function<Item.Properties, T> factory, @Nullable ResourceKey<CreativeModeTab> group) {
-        Preconditions.checkArgument(id.getNamespace().equals(Mod.MOD_ID), "Can only register items in " + Mod.MOD_ID + " namespace");
-        var definition = new ItemDefinition<>(name, REGISTRY.registerItem(id.getPath(), factory));
+        Preconditions.checkArgument(id.getNamespace().equals(ExampleMod.MOD_ID), "Can only register items in " + ExampleMod.MOD_ID + " namespace");
+        var definition = new ItemDefinition<>(name, DR.registerItem(id.getPath(), factory));
 
         if (Objects.equals(group, Tab.MAIN)) {
             Tab.add(definition);

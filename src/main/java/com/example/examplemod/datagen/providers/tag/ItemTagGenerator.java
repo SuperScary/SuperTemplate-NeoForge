@@ -1,6 +1,6 @@
 package com.example.examplemod.datagen.providers.tag;
 
-import com.example.examplemod.core.Mod;
+import com.example.examplemod.core.ExampleMod;
 import com.example.examplemod.datagen.IDataProvider;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
@@ -15,7 +15,7 @@ import java.util.concurrent.CompletableFuture;
 public class ItemTagGenerator extends ItemTagsProvider implements IDataProvider {
 
     public ItemTagGenerator (PackOutput packOutput, CompletableFuture<HolderLookup.Provider> future, CompletableFuture<TagLookup<Block>> completableFuture, @Nullable ExistingFileHelper existingFileHelper) {
-        super(packOutput, future, completableFuture, Mod.MOD_ID, existingFileHelper);
+        super(packOutput, future, completableFuture, ExampleMod.MOD_ID, existingFileHelper);
     }
 
     @Override

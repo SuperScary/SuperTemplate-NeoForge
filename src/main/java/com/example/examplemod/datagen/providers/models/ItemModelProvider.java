@@ -1,6 +1,6 @@
 package com.example.examplemod.datagen.providers.models;
 
-import com.example.examplemod.core.Mod;
+import com.example.examplemod.core.ExampleMod;
 import com.example.examplemod.core.definitions.BlockDefinition;
 import com.example.examplemod.core.definitions.ItemDefinition;
 import com.example.examplemod.core.registries.ModItems;
@@ -13,11 +13,11 @@ import net.neoforged.neoforge.common.data.ExistingFileHelper;
 public class ItemModelProvider extends net.neoforged.neoforge.client.model.generators.ItemModelProvider implements IDataProvider {
 
     public ItemModelProvider (PackOutput packOutput, ExistingFileHelper existingFileHelper) {
-        super(packOutput, Mod.MOD_ID, existingFileHelper);
+        super(packOutput, ExampleMod.MOD_ID, existingFileHelper);
     }
 
     private static ResourceLocation makeId (String id) {
-        return id.contains(":") ? ResourceLocation.parse(id) : Mod.getResource(id);
+        return id.contains(":") ? ResourceLocation.parse(id) : ExampleMod.getResource(id);
     }
 
     @Override
@@ -27,7 +27,7 @@ public class ItemModelProvider extends net.neoforged.neoforge.client.model.gener
     }
 
     private ItemModelBuilder blockOff (BlockDefinition<?> block) {
-        return withExistingParent(block.id().getPath(), Mod.getResource("block/" + block.id().getPath() + "/" + block.id().getPath() + "_off"));
+        return withExistingParent(block.id().getPath(), ExampleMod.getResource("block/" + block.id().getPath() + "/" + block.id().getPath() + "_off"));
     }
 
     private ItemModelBuilder flatSingleLayer (ItemDefinition<?> item, String texture) {

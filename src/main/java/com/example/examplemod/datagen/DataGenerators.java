@@ -1,6 +1,6 @@
 package com.example.examplemod.datagen;
 
-import com.example.examplemod.core.Mod;
+import com.example.examplemod.core.ExampleMod;
 import com.example.examplemod.datagen.providers.lang.EnLangProvider;
 import com.example.examplemod.datagen.providers.models.BlockModelProvider;
 import com.example.examplemod.datagen.providers.models.ItemModelProvider;
@@ -21,7 +21,7 @@ import java.util.concurrent.CompletableFuture;
 import java.util.function.BiFunction;
 
 @SuppressWarnings("unused")
-@EventBusSubscriber(modid = Mod.MOD_ID, bus = EventBusSubscriber.Bus.MOD)
+@EventBusSubscriber(modid = ExampleMod.MOD_ID, bus = EventBusSubscriber.Bus.MOD)
 public class DataGenerators {
 
     @SubscribeEvent

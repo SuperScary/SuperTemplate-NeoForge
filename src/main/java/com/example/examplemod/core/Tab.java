@@ -21,11 +21,11 @@ public class Tab {
 
     private static final Multimap<ResourceKey<CreativeModeTab>, ItemDefinition<?>> externalItemDefs = HashMultimap.create();
     private static final List<ItemDefinition<?>> itemDefs = new ArrayList<>();
-    public static final ResourceKey<CreativeModeTab> MAIN = ResourceKey.create(Registries.CREATIVE_MODE_TAB, Mod.getResource("main"));
+    public static final ResourceKey<CreativeModeTab> MAIN = ResourceKey.create(Registries.CREATIVE_MODE_TAB, ExampleMod.getResource("main"));
 
     public static void init (Registry<CreativeModeTab> registry) {
         var tab = CreativeModeTab.builder()
-                .title(Component.translatable("itemGroup." + Mod.MOD_ID))
+                .title(Component.translatable("itemGroup." + ExampleMod.MOD_ID))
                 .icon(ModItems.EXAMPLE_ITEM::stack)
                 .displayItems(Tab::buildDisplayItems)
                 .build();

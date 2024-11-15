@@ -1,6 +1,6 @@
 package com.example.examplemod.datagen.providers.loot;
 
-import com.example.examplemod.core.Mod;
+import com.example.examplemod.core.ExampleMod;
 import com.google.common.collect.ImmutableMap;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderLookup;
@@ -46,7 +46,7 @@ public class DropProvider extends BlockLootSubProvider {
 
     @Override
     protected @NotNull Iterable<Block> getKnownBlocks () {
-        return BuiltInRegistries.BLOCK.stream().filter(entry -> entry.getLootTable().location().getNamespace().equals(Mod.MOD_ID))
+        return BuiltInRegistries.BLOCK.stream().filter(entry -> entry.getLootTable().location().getNamespace().equals(ExampleMod.MOD_ID))
                 .toList();
     }
 

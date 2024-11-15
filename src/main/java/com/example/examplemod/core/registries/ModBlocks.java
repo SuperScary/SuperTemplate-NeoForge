@@ -2,7 +2,7 @@ package com.example.examplemod.core.registries;
 
 import com.example.examplemod.block.BaseBlock;
 import com.example.examplemod.block.DecorativeBlock;
-import com.example.examplemod.core.Mod;
+import com.example.examplemod.core.ExampleMod;
 import com.example.examplemod.core.Tab;
 import com.example.examplemod.core.definitions.BlockDefinition;
 import com.example.examplemod.core.definitions.ItemDefinition;
@@ -22,7 +22,7 @@ import java.util.function.Supplier;
 
 public class ModBlocks {
 
-    public static final DeferredRegister.Blocks REGISTRY = DeferredRegister.createBlocks(Mod.MOD_ID);
+    public static final DeferredRegister.Blocks DR = DeferredRegister.createBlocks(ExampleMod.MOD_ID);
 
     public static final List<BlockDefinition<?>> BLOCKS = new ArrayList<>();
 
@@ -34,7 +34,7 @@ public class ModBlocks {
     }
 
     public static <T extends Block> BlockDefinition<T> reg (final String name, final Supplier<T> supplier) {
-        return reg(name, Mod.getResource(name), supplier, null, true);
+        return reg(name, ExampleMod.getResource(name), supplier, null, true);
     }
 
     public static <T extends Block> BlockDefinition<T> reg (final String name, ResourceLocation id, final Supplier<T> supplier, boolean addToTab) {
@@ -42,8 +42,8 @@ public class ModBlocks {
     }
 
     public static <T extends Block> BlockDefinition<T> reg (final String name, ResourceLocation id, final Supplier<T> supplier, @Nullable BiFunction<Block, Item.Properties, BlockItem> itemFactory, boolean addToTab) {
-        var deferredBlock = REGISTRY.register(id.getPath(), supplier);
-        var deferredItem = ModItems.REGISTRY.register(id.getPath(), () -> {
+        var deferredBlock = DR.register(id.getPath(), supplier);
+        var deferredItem = ModItems.DR.register(id.getPath(), () -> {
             var block = deferredBlock.get();
             var itemProperties = new Item.Properties();
             if (itemFactory != null) {

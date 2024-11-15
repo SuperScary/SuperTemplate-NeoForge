@@ -2,6 +2,7 @@ package com.example.examplemod.core;
 
 import com.example.examplemod.core.registries.ModBlocks;
 import com.example.examplemod.core.registries.ModItems;
+import com.example.examplemod.core.util.PlatformUtils;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.server.MinecraftServer;
@@ -14,15 +15,20 @@ import org.jetbrains.annotations.Nullable;
 import java.util.Collection;
 import java.util.Collections;
 
-public abstract class ModBase implements Mod {
+public abstract class ExampleModBase implements ExampleMod {
 
-    static ModBase INSTANCE;
+    static ExampleModBase INSTANCE;
 
-    public ModBase (IEventBus modEventBus) {
+    public ExampleModBase (IEventBus modEventBus) {
         if (INSTANCE != null) {
             throw new IllegalStateException("Already initialized");
         }
         INSTANCE = this;
+
+        if (PlatformUtils.isDevelopmentEnvironment()) ExampleMod.getLogger().warn("{} is running in a development environment. Is this intentional?", ExampleMod.NAME);
+
+        ModBlocks.DR.register(modEventBus);
+        ModItems.DR.register(modEventBus);
 
         modEventBus.addListener(Tab::initExternal);
         modEventBus.addListener((RegisterEvent event) -> {
@@ -30,9 +36,6 @@ public abstract class ModBase implements Mod {
                 registerCreativeTabs();
             }
         });
-
-        ModBlocks.REGISTRY.register(modEventBus);
-        ModItems.REGISTRY.register(modEventBus);
 
     }
 

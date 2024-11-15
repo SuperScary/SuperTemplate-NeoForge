@@ -9,15 +9,15 @@ import org.slf4j.LoggerFactory;
 
 import java.util.Collection;
 
-public interface Mod {
+public interface ExampleMod {
 
     String MOD_ID = "examplemod";
     String NAME = "Example Mod";
 
     Logger LOGGER = LoggerFactory.getLogger(NAME);
 
-    static Mod instance () {
-        return ModBase.INSTANCE;
+    static ExampleMod instance () {
+        return ExampleModBase.INSTANCE;
     }
 
     static ResourceLocation getResource (String name) {

@@ -1,6 +1,6 @@
 package com.example.examplemod.datagen.providers.models;
 
-import com.example.examplemod.core.Mod;
+import com.example.examplemod.core.ExampleMod;
 import com.example.examplemod.core.definitions.BlockDefinition;
 import com.example.examplemod.datagen.IDataProvider;
 import com.google.gson.JsonPrimitive;
@@ -19,7 +19,7 @@ import org.jetbrains.annotations.NotNull;
 
 public abstract class BlockStateProvider extends net.neoforged.neoforge.client.model.generators.BlockStateProvider implements IDataProvider {
 
-    private static final VariantProperty<VariantProperties.Rotation> Z_ROT = new VariantProperty<>(Mod.MOD_ID + ":z", r -> new JsonPrimitive(r.ordinal() * 90));
+    private static final VariantProperty<VariantProperties.Rotation> Z_ROT = new VariantProperty<>(ExampleMod.MOD_ID + ":z", r -> new JsonPrimitive(r.ordinal() * 90));
 
     public BlockStateProvider (PackOutput packOutput, String modid, ExistingFileHelper existingFileHelper) {
         super(packOutput, modid, existingFileHelper);
@@ -84,14 +84,14 @@ public abstract class BlockStateProvider extends net.neoforged.neoforge.client.m
     }
 
     protected void simpleBlockAndItem (BlockDefinition<?> block, String textureName) {
-        var model = models().cubeAll(block.id().getPath(), Mod.getResource(textureName));
+        var model = models().cubeAll(block.id().getPath(), ExampleMod.getResource(textureName));
         simpleBlock(block.block(), model);
         simpleBlockItem(block.block(), model);
     }
 
     protected void wall (BlockDefinition<WallBlock> block, String texture) {
-        wallBlock(block.block(), Mod.getResource(texture));
-        itemModels().wallInventory(block.id().getPath(), Mod.getResource(texture));
+        wallBlock(block.block(), ExampleMod.getResource(texture));
+        itemModels().wallInventory(block.id().getPath(), ExampleMod.getResource(texture));
     }
 
     protected void slabBlock (BlockDefinition<SlabBlock> slab, BlockDefinition<?> base) {
@@ -101,9 +101,9 @@ public abstract class BlockStateProvider extends net.neoforged.neoforge.client.m
 
     protected void slabBlock (BlockDefinition<SlabBlock> slab, BlockDefinition<?> base, String bottomTexture,
                               String sideTexture, String topTexture) {
-        var side = Mod.getResource(sideTexture);
-        var bottom = Mod.getResource(bottomTexture);
-        var top = Mod.getResource(topTexture);
+        var side = ExampleMod.getResource(sideTexture);
+        var bottom = ExampleMod.getResource(bottomTexture);
+        var top = ExampleMod.getResource(topTexture);
 
         var bottomModel = models().slab(slab.id().getPath(), side, bottom, top);
         simpleBlockItem(slab.block(), bottomModel);
@@ -124,9 +124,9 @@ public abstract class BlockStateProvider extends net.neoforged.neoforge.client.m
                                 String topTexture) {
         var baseName = stairs.id().getPath();
 
-        var side = Mod.getResource(sideTexture);
-        var bottom = Mod.getResource(bottomTexture);
-        var top = Mod.getResource(topTexture);
+        var side = ExampleMod.getResource(sideTexture);
+        var bottom = ExampleMod.getResource(bottomTexture);
+        var top = ExampleMod.getResource(topTexture);
 
         ModelFile stairsModel = models().stairs(baseName, side, bottom, top);
         ModelFile stairsInner = models().stairsInner(baseName + "_inner", side, bottom, top);

@@ -1,6 +1,6 @@
 package com.example.examplemod.datagen.providers.models;
 
-import com.example.examplemod.core.Mod;
+import com.example.examplemod.core.ExampleMod;
 import com.example.examplemod.core.definitions.BlockDefinition;
 import com.example.examplemod.core.registries.ModBlocks;
 import net.minecraft.data.PackOutput;
@@ -11,7 +11,7 @@ import net.neoforged.neoforge.common.data.ExistingFileHelper;
 public class BlockModelProvider extends BlockStateProvider {
 
     public BlockModelProvider (PackOutput output, ExistingFileHelper exFileHelper) {
-        super(output, Mod.MOD_ID, exFileHelper);
+        super(output, ExampleMod.MOD_ID, exFileHelper);
     }
 
     @Override
@@ -30,11 +30,11 @@ public class BlockModelProvider extends BlockStateProvider {
     }
 
     private void blockItem (BlockDefinition<Block> blockRegistryObject, String appendix) {
-        simpleBlockItem(blockRegistryObject.block(), new ModelFile.UncheckedModelFile(Mod.MOD_ID + ":block/" + blockRegistryObject.id().getPath() + appendix));
+        simpleBlockItem(blockRegistryObject.block(), new ModelFile.UncheckedModelFile(ExampleMod.MOD_ID + ":block/" + blockRegistryObject.id().getPath() + appendix));
     }
 
     private void blockItem (BlockDefinition<?> blockRegistryObject) {
-        simpleBlockItem(blockRegistryObject.block(), new ModelFile.UncheckedModelFile(Mod.MOD_ID + ":block/" + blockRegistryObject.id().getPath()));
+        simpleBlockItem(blockRegistryObject.block(), new ModelFile.UncheckedModelFile(ExampleMod.MOD_ID + ":block/" + blockRegistryObject.id().getPath()));
     }
 
     private void blockWithItem (BlockDefinition<?> blockRegistryObject) {

@@ -1,6 +1,6 @@
 package com.example.examplemod.datagen.providers.recipes;
 
-import com.example.examplemod.core.Mod;
+import com.example.examplemod.core.ExampleMod;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.RecipeOutput;
@@ -16,7 +16,7 @@ public class BlastingRecipes extends RecipeProvider {
 
     @Override
     public @NotNull String getName () {
-        return Mod.NAME + "Blasting Recipes";
+        return ExampleMod.NAME + "Blasting Recipes";
     }
 
     @Override
